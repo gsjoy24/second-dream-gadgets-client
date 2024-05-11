@@ -38,20 +38,7 @@ const SellModal = ({ sellingItem }: any) => {
 				onCancel={() => setIsSellModalOpen(false)}
 				footer={null}
 			>
-				<Form form={form} layout='vertical' onFinish={handleSell} initialValues={{ quantity: 1 }}>
-					<Row gutter={10}>
-						<Col span={12}>
-							<GMInput name='customer' label='Customer name' />
-							<GMDatePicker name='date' label='Selling Date' />
-						</Col>
-						<Col span={12}>
-							<GMInput name='quantity' label='Quantity' type='number' />
-						</Col>
-						<Button htmlType='submit' type='primary' className='ml-auto w-[100px]' loading={isLoading}>
-							Sell
-						</Button>
-					</Row>
-				</Form>
+				
 			</Modal>
 		</>
 	);

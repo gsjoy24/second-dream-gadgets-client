@@ -97,7 +97,7 @@ const Products = () => {
 	};
 
 	return (
-		<div className='relative'>
+		<div className='relative m-8'>
 			<SearchForm setParams={setParams} />
 			<div className='my-3 absolute right-0 -top-2'>
 				<Button type='dashed' onClick={deleteProducts} disabled={!hasSelected} loading={isDeleting}>

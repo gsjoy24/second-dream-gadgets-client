@@ -81,7 +81,7 @@ const Sales = () => {
 		}
 	};
 	return (
-		<div className='relative'>
+		<div className='relative m-8'>
 			<GMTitle title='Sales' />
 			<Row className='flex gap-3 items-center my-4'>
 				<Col span={3}>
