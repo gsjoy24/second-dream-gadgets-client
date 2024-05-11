@@ -8,6 +8,7 @@ import userRoutes from '../../utils/userRoutes';
 
 const Sidebar = () => {
 	const user = useAppSelector(selectCurrentUser);
+
 	const dispatch = useAppDispatch();
 	const sidebarItems = userRoutes(user?.role as string);
 

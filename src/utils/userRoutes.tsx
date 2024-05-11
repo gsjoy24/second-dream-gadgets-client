@@ -3,6 +3,7 @@ import { FaCartFlatbed } from 'react-icons/fa6';
 import { IoBarChartSharp } from 'react-icons/io5';
 import { MdLibraryAdd } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
+import CartLink from './CartLink';
 
 let sidebarItems = [
 	{
@@ -42,7 +43,7 @@ let sidebarItems = [
 		route: {
 			key: '4',
 			icon: <FaCartFlatbed />,
-			label: <NavLink to='/checkout'>Cart</NavLink>
+			label: <CartLink />
 		}
 	}
 ];
