@@ -15,8 +15,16 @@ const cartApi = baseApi.injectEndpoints({
 				method: 'POST'
 			}),
 			invalidatesTags: ['cart']
+		}),
+
+		manipulateCartQuantity: builder.mutation({
+			query: ({ action, id }) => ({
+				url: `/cart/${action}/${id}`,
+				method: 'PUT'
+			}),
+			invalidatesTags: ['cart']
 		})
 	})
 });
 
-export const { useAddToCartMutation, useGetMyCartQuery } = cartApi;
+export const { useAddToCartMutation, useGetMyCartQuery, useManipulateCartQuantityMutation } = cartApi;
