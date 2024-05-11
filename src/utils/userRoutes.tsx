@@ -42,7 +42,7 @@ let sidebarItems = [
 		route: {
 			key: '4',
 			icon: <FaCartFlatbed />,
-			label: <NavLink to='/check-out'>Cart</NavLink>
+			label: <NavLink to='/checkout'>Cart</NavLink>
 		}
 	}
 ];

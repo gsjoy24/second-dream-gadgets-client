@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import RouteProtector from '../components/RouteProtector';
 import AddAdmin from '../pages/AddAdmin';
 import AddProduct from '../pages/AddProduct';
+import Cart from '../pages/Cart';
 import Login from '../pages/Login';
 import MakeVariant from '../pages/MakeVariant';
 import NotFound from '../pages/NotFound';
@@ -37,12 +37,12 @@ const router = createBrowserRouter([
 				element: <Sales />
 			},
 			{
+				path: '/checkout',
+				element: <Cart />
+			},
+			{
 				path: '/add-admin',
-				element: (
-					<RouteProtector role='user'>
-						<AddAdmin />
-					</RouteProtector>
-				)
+				element: <AddAdmin />
 			}
 		]
 	},
