@@ -1,12 +1,12 @@
 ## Instructions on how to run the application locally 📝
 
 - 1️⃣ Clone the repository to your machine if you have the access. Use this link to do it.
-  ↦ <https://github.com/Porgramming-Hero-web-course/l2b2-full-stack-a5-client-side-gsjoy24>
+  ↦ <https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-fronten-gsjoy24.git>
 - 2️⃣ Open the project in vs code and create a file named .env.local in the root of the folder.
 - 3️⃣ Add the code bellow in the .env.local file
 
 ```
-VITE_SERVER_URL=https://dream-gadgets-server.vercel.app/api
+VITE_SERVER_URL=https://second-dream-server.vercel.app/api/
 VITE_IMGBB_API_KEY=41d6a469676573f180207dfc96d6c804
 ```
 
@@ -17,13 +17,13 @@ VITE_IMGBB_API_KEY=41d6a469676573f180207dfc96d6c804
 - 7️⃣ use the credentials to login
 
 ```
-email : admin@example.com
-password : AdminPr0
+email :superAdmin@gmail.com
+password : superAdmin0
 ```
 
 Now you can do all the CRUD operations that was required for the assignment. I will recommend you to see the package.json file to see all the commands.
 
 #### This application is deployed on firebase
 
-- live link ↦ <https://dream-gadget.web.app/>
-- server link ↦ <https://dream-gadgets-server.vercel.app/>
+- live link ↦ PENDING
+- server link ↦ <https://second-dream-server.vercel.app/>
