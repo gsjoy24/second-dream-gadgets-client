@@ -1,10 +1,11 @@
 import { Button, Space, Spin, Table, TableColumnsType, TableProps } from 'antd';
 import { useState } from 'react';
+import { FaCartPlus, FaClone, FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import ProductImage from '../components/ProductImage';
 import SearchForm from '../components/SearchForm';
-import SellModal from '../components/SellModal';
+
 import {
 	allBrands,
 	cameraResolutions,
@@ -16,7 +17,12 @@ import {
 	screenResolutions,
 	storageCapacities
 } from '../constants';
+
 import { useDeleteMultipleProductsMutation, useGetProductsQuery } from '../redux/features/product/productApi';
+
+import { selectCurrentUser } from '../redux/features/auth/authSlice';
+import { useAddToCartMutation } from '../redux/features/cart/cartApi';
+import { useAppSelector } from '../redux/hooks';
 import { TProduct } from '../types/TProduct';
 import { TTableData } from '../types/TTableData';
 import { TQueryParams } from '../types/global.type';
@@ -42,6 +48,18 @@ type TDataType = Pick<
 >;
 
 const Products = () => {
+	const user = useAppSelector(selectCurrentUser);
+	const [addToCart, { isLoading: adding }] = useAddToCartMutation();
+	const addToCartHandler = async (id: string) => {
+		try {
+			const res = await addToCart(id).unwrap();
+			if (res.success) {
+				toast.success(res.message);
+			}
+		} catch (error: any) {
+			toast.error(error.data.message);
+		}
+	};
 	// columns for the table
 	const columns: TableColumnsType<TTableData> = [
 		{
@@ -54,7 +72,6 @@ const Products = () => {
 		{
 			title: 'Name',
 			dataIndex: 'product_name',
-
 			className: 'w-40'
 		},
 		{
@@ -124,19 +141,30 @@ const Products = () => {
 				<Space className='flex flex-col'>
 					<Space size='small'>
 						{/* modal for selling products */}
-						<SellModal sellingItem={record} />
+						<Button
+							type='dashed'
+							onClick={() => addToCartHandler(record.key as string)}
+							disabled={user?.role === 'admin'}
+							title='Add to cart'
+						>
+							<FaCartPlus size={18} />
+						</Button>
 						{/* link to update product */}
 						<Link to={`/update/${record.key}`}>
-							<Button type='dashed'>Edit</Button>
+							<Button type='dashed' title='Update product'>
+								<FaEdit size={18} />
+							</Button>
 						</Link>
 					</Space>
 					{/* link to make a new variant of an existing product */}
 					<Link to={`/make-variant/${record.key}`}>
-						<Button type='dashed'>Make a variant</Button>
+						<Button type='dashed' title='Make a variant'>
+							<FaClone size={18} />
+						</Button>
 					</Link>
 				</Space>
 			),
-			width: 140,
+			width: 120,
 			fixed: 'right'
 		}
 	];
