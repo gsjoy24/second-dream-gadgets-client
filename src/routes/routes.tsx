@@ -1,9 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
+import RouteProtector from '../components/RouteProtector';
 import AddAdmin from '../pages/AddAdmin';
 import AddProduct from '../pages/AddProduct';
 import Login from '../pages/Login';
 import MakeVariant from '../pages/MakeVariant';
+import NotFound from '../pages/NotFound';
 import Products from '../pages/Products';
 import Sales from '../pages/Sales';
 import UpdateProduct from '../pages/UpdateProduct';
@@ -12,6 +14,7 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <App />,
+		errorElement: <NotFound />,
 		children: [
 			{
 				path: '/products',
@@ -35,7 +38,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/add-admin',
-				element: <AddAdmin />
+				element: (
+					<RouteProtector role='user'>
+						<AddAdmin />
+					</RouteProtector>
+				)
 			}
 		]
 	},

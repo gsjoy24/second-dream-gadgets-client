@@ -1,39 +1,15 @@
 import { Button, Menu } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { FaListAlt, FaUserCog, FaUserShield } from 'react-icons/fa';
+import { FaUserCog } from 'react-icons/fa';
 import { HiLogout } from 'react-icons/hi';
-import { IoBarChartSharp } from 'react-icons/io5';
-import { MdLibraryAdd } from 'react-icons/md';
-import { NavLink } from 'react-router-dom';
 import { logOut, selectCurrentUser } from '../../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import userRoutes from '../../utils/userRoutes';
 
 const Sidebar = () => {
 	const user = useAppSelector(selectCurrentUser);
 	const dispatch = useAppDispatch();
-
-	let sidebarItems = [
-		{
-			key: '1',
-			icon: <FaListAlt />,
-			label: <NavLink to='/products'>Products</NavLink>
-		},
-		{
-			key: '2',
-			icon: <MdLibraryAdd />,
-			label: <NavLink to='/add-product'>Add Products</NavLink>
-		},
-		{
-			key: '3',
-			icon: <IoBarChartSharp />,
-			label: <NavLink to='/sales'>Sales</NavLink>
-		},
-		{
-			key: '4',
-			icon: <FaUserShield />,
-			label: <NavLink to='/add-admin'>Add New Admin</NavLink>
-		}
-	];
+	const sidebarItems = userRoutes(user?.role as string);
 
 	return (
 		<Sider breakpoint='lg' collapsedWidth='0' className='min-h-[100vh]'>

@@ -1,12 +1,14 @@
+import { Navigate } from 'react-router-dom';
 import MainLayout from './components/Layout/MainLayout';
-import ProtectedRoute from './components/Layout/ProtectedRoute';
+import { selectCurrentUser } from './redux/features/auth/authSlice';
+import { useAppSelector } from './redux/hooks';
 
 function App() {
-	return (
-		<ProtectedRoute>
-			<MainLayout />
-		</ProtectedRoute>
-	);
+	const user = useAppSelector(selectCurrentUser);
+	if (!user) {
+		return <Navigate to='/login' />;
+	}
+	return <MainLayout />;
 }
 
 export default App;
