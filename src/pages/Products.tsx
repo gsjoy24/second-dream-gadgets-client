@@ -96,6 +96,7 @@ const Products = () => {
 		}
 	};
 
+
 	return (
 		<div className='relative m-8'>
 			<SearchForm setParams={setParams} />

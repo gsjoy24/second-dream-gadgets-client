@@ -1,13 +1,15 @@
 import { Button } from 'antd';
 import { FaMinus, FaPlus } from 'react-icons/fa';
+import { MdDeleteForever } from 'react-icons/md';
 import { toast } from 'sonner';
-import { useManipulateCartQuantityMutation } from '../redux/features/cart/cartApi';
+import { useManipulateCartQuantityMutation, useRemoveFromCartMutation } from '../redux/features/cart/cartApi';
 import ProductImage from './ProductImage';
 
 const CartItem = ({ product, quantity }: any) => {
 	const { _id, product_name, product_price, product_image, quantity: product_quantity } = product;
 
 	const [manipulateQuantity] = useManipulateCartQuantityMutation();
+	const [removeFromCart] = useRemoveFromCartMutation();
 
 	const handleManipulateQuantity = async (action: 'increment' | 'decrement', id: string) => {
 		try {
@@ -18,9 +20,23 @@ const CartItem = ({ product, quantity }: any) => {
 		}
 	};
 
+	const handleRemoveFromCart = async () => {
+		try {
+			const res = (await removeFromCart(_id)) as any;
+			toast.success(res?.data.message);
+		} catch (error) {
+			toast.error('Failed to remove from cart!');
+		}
+	};
+
 	return (
 		<div className='flex justify-between items-center mb-4'>
-			<ProductImage image_path={product_image} />
+			<div className='relative'>
+				<ProductImage image_path={product_image} />
+				<Button className='absolute -top-4 -left-6 text-white' type='link' onClick={() => handleRemoveFromCart()}>
+					<MdDeleteForever size={25} />
+				</Button>
+			</div>
 			<h1 className='text-lg font-semibold'>{product_name}</h1>
 			<p>
 				<Button

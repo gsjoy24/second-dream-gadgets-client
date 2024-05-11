@@ -2,12 +2,16 @@ import { Button } from 'antd';
 import { FaCartPlus } from 'react-icons/fa';
 import { toast } from 'sonner';
 import { selectCurrentUser } from '../redux/features/auth/authSlice';
-import { useAddToCartMutation } from '../redux/features/cart/cartApi';
+import { useAddToCartMutation, useGetMyCartQuery } from '../redux/features/cart/cartApi';
 import { useAppSelector } from '../redux/hooks';
 
 const AddToCartButton = ({ id }: any) => {
 	const user = useAppSelector(selectCurrentUser);
 	const [addToCart, { isLoading }] = useAddToCartMutation();
+	const { data: cartData } = useGetMyCartQuery(undefined);
+	const productIds = cartData?.data?.cart.map((item: any) => item.product._id);
+
+	const isProductInCart = productIds?.includes(id);
 
 	const addToCartHandler = async () => {
 		try {
@@ -24,9 +28,9 @@ const AddToCartButton = ({ id }: any) => {
 		<Button
 			type='dashed'
 			onClick={() => addToCartHandler()}
-			disabled={user?.role === 'admin'}
+			disabled={user?.role === 'admin' || isProductInCart}
 			loading={isLoading}
-			title='Add to cart'
+			title={isProductInCart ? 'Product already in cart!' : 'Add to cart'}
 			className='flex justify-center items-center'
 		>
 			<FaCartPlus size={18} />

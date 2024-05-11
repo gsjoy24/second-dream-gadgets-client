@@ -32,7 +32,7 @@ const CheckOut = () => {
 					</Col>
 					<Col span={13} className='h-full flex items-center bg-gray-900 p-5 text-white border-l-2 border-blue-500'>
 						<div className='max-h-[600px] w-full overflow-y-auto p-2'>
-							<h1 className='text-xl font-semibold mb-5'>Cart</h1>
+							<h1 className='text-2xl font-bold mb-5'>Cart</h1>
 							{cartData.data?.cart?.map(({ product, quantity }: any) => (
 								<CartItem product={product} quantity={quantity} key={product._id} />
 							))}
