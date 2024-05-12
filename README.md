@@ -27,12 +27,12 @@ password : ManagerPr0
 
 <!-- for user -->
 email :user@gmail.com
-password : UserPr0
+password : UserPr00
 ```
 
 Now you can do all the CRUD operations that was required for the assignment. I will recommend you to see the package.json file to see all the commands.
 
 #### This application is deployed on firebase
 
-- live link ↦ PENDING
+- live link ↦ <https://second-dream-gadgets.web.app/>
 - server link ↦ <https://second-dream-server.vercel.app/>
