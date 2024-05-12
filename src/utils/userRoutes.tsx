@@ -35,7 +35,7 @@ let sidebarItems = [
 		route: {
 			key: '4',
 			icon: <FaUserShield />,
-			label: <NavLink to='/add-admin'>Add New Admin</NavLink>
+			label: <NavLink to='/add-admin'>Add New Access</NavLink>
 		}
 	},
 	{
