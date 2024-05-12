@@ -2,13 +2,12 @@ import { baseApi } from '../../api/baseApi';
 
 const cartApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		// get products
+		// get user cart
 		getMyCart: builder.query({
 			query: () => ({ url: '/cart/my-cart', method: 'GET' }),
 			providesTags: ['cart']
 		}),
 
-		// add product
 		addToCart: builder.mutation({
 			query: (id) => ({
 				url: `/cart/add/${id}`,
@@ -25,7 +24,7 @@ const cartApi = baseApi.injectEndpoints({
 			invalidatesTags: ['cart']
 		}),
 
-		// remove product
+		// remove product from cart
 		removeFromCart: builder.mutation({
 			query: (id) => ({
 				url: `/cart/remove/${id}`,

@@ -24,11 +24,11 @@ const salesApi = baseApi.injectEndpoints({
 		// add sale
 		addSale: builder.mutation({
 			query: (data) => ({
-				url: '/sales',
+				url: '/sales/sell-all-products',
 				method: 'POST',
 				body: data
 			}),
-			invalidatesTags: ['sales', 'products']
+			invalidatesTags: ['sales', 'products', 'cart']
 		}),
 
 		// delete multiple sales
