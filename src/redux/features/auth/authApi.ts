@@ -2,6 +2,14 @@ import { baseApi } from '../../api/baseApi';
 
 const authApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
+		registerUser: builder.mutation({
+			query: (userInfo) => ({
+				url: '/users/create-user',
+				method: 'POST',
+				body: userInfo
+			})
+		}),
+
 		addAdminOrManager: builder.mutation({
 			query: (userInfo) => ({
 				url: '/users/create-admin-or-manager',
@@ -19,4 +27,4 @@ const authApi = baseApi.injectEndpoints({
 	})
 });
 
-export const { useAddAdminOrManagerMutation, useLoginMutation } = authApi;
+export const { useAddAdminOrManagerMutation, useRegisterUserMutation, useLoginMutation } = authApi;

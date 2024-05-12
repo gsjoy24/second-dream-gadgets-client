@@ -17,8 +17,17 @@ VITE_IMGBB_API_KEY=41d6a469676573f180207dfc96d6c804
 - 7️⃣ use the credentials to login
 
 ```
+<!-- for admin -->
 email :superAdmin@gmail.com
 password : superAdmin0
+
+<!-- for manager -->
+email : manager@gmail.com
+password : ManagerPr0
+
+<!-- for user -->
+email :user@gmail.com
+password : UserPr0
 ```
 
 Now you can do all the CRUD operations that was required for the assignment. I will recommend you to see the package.json file to see all the commands.

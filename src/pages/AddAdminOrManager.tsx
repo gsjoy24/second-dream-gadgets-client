@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 import GMSelect from '../components/GMSelect';
 import { useAddAdminOrManagerMutation } from '../redux/features/auth/authApi';
 
-const AddAdmin = () => {
+const AddAdminOrManager = () => {
 	const [form] = Form.useForm();
 	const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 	const options = [
@@ -18,9 +18,8 @@ const AddAdmin = () => {
 		try {
 			await addAdminOrManager(data).unwrap();
 			toast.success(`${data.role} added successfully!`);
+			form.resetFields();
 		} catch (error: any) {
-			// show error message
-			console.log('error', error);
 			toast.error((error as any)?.data?.errorMessage || 'Something went wrong!');
 		}
 	};
@@ -63,4 +62,4 @@ const AddAdmin = () => {
 	);
 };
 
-export default AddAdmin;
+export default AddAdminOrManager;

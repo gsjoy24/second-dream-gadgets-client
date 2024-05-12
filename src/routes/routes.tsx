@@ -1,12 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import AddAdmin from '../pages/AddAdmin';
+import AddAdminOrManager from '../pages/AddAdminOrManager';
 import AddProduct from '../pages/AddProduct';
 import CheckOut from '../pages/CheckOut';
 import Login from '../pages/Login';
 import MakeVariant from '../pages/MakeVariant';
 import NotFound from '../pages/NotFound';
 import Products from '../pages/Products';
+import Registration from '../pages/Registration';
 import Sales from '../pages/Sales';
 import UpdateProduct from '../pages/UpdateProduct';
 
@@ -42,9 +43,13 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/add-admin',
-				element: <AddAdmin />
+				element: <AddAdminOrManager />
 			}
 		]
+	},
+	{
+		path: '/registration',
+		element: <Registration />
 	},
 	{
 		path: '/login',

@@ -39,28 +39,10 @@ const Login = () => {
 			toast.error((error as any)?.data?.message || 'Something went wrong!');
 		}
 	};
-	//TODO: remove password and email default values before production
-	// !This is the default values for the form fields if needed
-	const defaultValues = {
-		email: 'superAdmin@gmail.com',
-		password: 'superAdmin0'
-	};
-
-	// const defaultValues = {
-	// 	email: 'gour.joy24@gmail.com',
-	// 	password: 'GourPr00'
-	// };
 
 	return (
 		<div className='bg-gray-900 flex flex-col justify-center items-center h-[100vh]'>
-			<Form
-				className='max-w-80 w-full'
-				form={form}
-				name='horizontal_login'
-				layout='vertical'
-				onFinish={onFinish}
-				initialValues={defaultValues}
-			>
+			<Form className='max-w-80 w-full' form={form} name='horizontal_login' layout='vertical' onFinish={onFinish}>
 				<h1 className='text-white text-4xl font-bold text-center mb-12'>Dream Gadgets</h1>
 				<Form.Item name='email' rules={[{ required: true, message: 'Please input your email!' }]}>
 					<Input className='p-3' prefix={<FaEnvelope className='site-form-item-icon' />} placeholder='Email' />
@@ -82,6 +64,14 @@ const Login = () => {
 					)}
 				</Form.Item>
 			</Form>
+			<div className='text-white mt-2'>
+				<p>
+					Don't have an account?
+					<span className='text-blue-500 cursor-pointer mx-2' onClick={() => navigate('/registration')}>
+						Register here
+					</span>
+				</p>
+			</div>
 		</div>
 	);
 };
