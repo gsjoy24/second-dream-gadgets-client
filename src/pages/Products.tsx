@@ -69,7 +69,7 @@ const Products = () => {
 	// delete multiple products
 	const deleteProducts = async () => {
 		setSelectedRowKeys([]);
-		const deletingProducts = await deleteMultipleProducts(selectedRowKeys).unwrap();
+		const deletingProducts = await deleteMultipleProducts(selectedRowKeys ).unwrap();
 		if (deletingProducts.data.modifiedCount === selectedRowKeys.length) {
 			toast.success('Selected products deleted successfully!');
 		}
@@ -95,7 +95,6 @@ const Products = () => {
 			setParams(queryArray as any);
 		}
 	};
-
 
 	return (
 		<div className='relative m-8'>

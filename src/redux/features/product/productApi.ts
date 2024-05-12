@@ -54,7 +54,7 @@ const productsApi = baseApi.injectEndpoints({
 			query: (product_ids: React.Key[]) => ({
 				url: '/products/delete-multiple-products',
 				method: 'POST',
-				body: product_ids
+				body: { product_ids }
 			}),
 			invalidatesTags: ['products']
 		})

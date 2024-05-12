@@ -41,15 +41,15 @@ const Login = () => {
 	};
 	//TODO: remove password and email default values before production
 	// !This is the default values for the form fields if needed
-	// const defaultValues = {
-	// 	email: 'superAdmin@gmail.com',
-	// 	password: 'superAdmin0'
-	// };
-
 	const defaultValues = {
-		email: 'gour.joy24@gmail.com',
-		password: 'GourPr00'
+		email: 'superAdmin@gmail.com',
+		password: 'superAdmin0'
 	};
+
+	// const defaultValues = {
+	// 	email: 'gour.joy24@gmail.com',
+	// 	password: 'GourPr00'
+	// };
 
 	return (
 		<div className='bg-gray-900 flex flex-col justify-center items-center h-[100vh]'>
