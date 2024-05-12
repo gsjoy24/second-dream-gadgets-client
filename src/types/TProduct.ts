@@ -19,3 +19,27 @@ export type TProduct = {
 	createdAt?: Date;
 	isDeleted?: boolean;
 };
+
+export type TSale = {
+	_id: string;
+	customer_name: string;
+	contact_number: string;
+	sold_by: TSoldBy;
+	products: TSoldProduct[];
+	total_amount: number;
+	selling_date: string;
+	createdAt: string;
+	updatedAt: string;
+};
+
+export type TSoldBy = {
+	_id: string;
+	name: string;
+	email: string;
+};
+
+export type TSoldProduct = {
+	product_name: string;
+	price: number;
+	quantity: number;
+};

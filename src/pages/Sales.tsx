@@ -6,7 +6,7 @@ import ProductImage from '../components/ProductImage';
 import SalesFilter from '../components/SalesFilter';
 import SearchForm from '../components/SearchForm';
 import { useDeleteMultipleSalesMutation, useGetSalesQuery } from '../redux/features/sales/sales.api';
-import { TProduct } from '../types/TProduct';
+import { TProduct, TSoldProduct } from '../types/TProduct';
 import { TSale } from '../types/TSale';
 import { TTableData } from '../types/TTableData';
 import formatDate from '../utils/formatDate';
@@ -16,43 +16,61 @@ const Sales = () => {
 	const [params, setParams] = useState([]);
 	const { data: sales, isLoading, isFetching } = useGetSalesQuery(params);
 	let dataSource;
+
 	if (sales) {
-		dataSource = sales.data.map((sale: Record<string, unknown>) => ({
+		dataSource = sales?.data.map((sale: Record<string, unknown>) => ({
 			key: sale._id,
-			customer: sale.customer,
-			product_name: (sale?.product as TProduct)?.product_name,
-			product_image: (sale?.product as TProduct)?.product_image,
-			quantity: sale.quantity,
-			total_price: sale.total_price,
-			date: sale.date
+			customer: sale.customer_name,
+			contact: sale.contact_number,
+			seller: sale?.sold_by,
+			products: sale.products,
+			total_amount: sale.total_amount,
+			date: sale.selling_date
 		}));
 	}
+
 	const [deleteMultipleSales, { isLoading: isDeleting }] = useDeleteMultipleSalesMutation();
 
 	const columns: TableColumnsType<TTableData> = [
-		{
-			title: 'Image',
-			dataIndex: 'product_image',
-			width: 110,
-			render: (path) => <ProductImage image_path={path} key={path} />,
-			fixed: 'left'
-		},
 		{
 			title: 'Customer Name',
 			dataIndex: 'customer'
 		},
 		{
-			title: 'Product Name',
-			dataIndex: 'product_name'
+			title: 'Contact Number',
+			dataIndex: 'contact'
 		},
 		{
-			title: 'Quantity',
-			dataIndex: 'quantity'
+			title: 'Seller',
+			dataIndex: 'seller',
+			render: (seller) => (
+				<div className='flex flex-col'>
+					<span>{seller?.name}</span>
+					<span>{seller?.email}</span>
+				</div>
+			)
 		},
 		{
-			title: 'Total Price',
-			dataIndex: 'total_price',
-			render: (price) => <span>${price}</span>
+			title: 'Products',
+			dataIndex: 'products',
+			render: (products: any) => (
+				<div className='flex gap-3'>
+					{products.map((product: TSoldProduct) => (
+						<div className='flex gap-2 border-r min-w-[90px]' key={`${product?.price}`}>
+							<div className='flex flex-col'>
+								<span>{product.product_name}</span>
+								<span>Price: ${product?.price}</span>
+								<span>Quantity: {product.quantity}</span>
+							</div>
+						</div>
+					))}
+				</div>
+			)
+		},
+		{
+			title: 'Total amount',
+			dataIndex: 'total_amount',
+			render: (amount) => <span>${amount}</span>
 		},
 		{
 			title: 'Date',
