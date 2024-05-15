@@ -7,7 +7,7 @@
 
 ```
 VITE_SERVER_URL=https://second-dream-server.vercel.app/api/
-VITE_IMGBB_API_KEY=41d6a469676573f180207dfc96d6c804
+VITE_IMGBB_API_KEY=""
 ```
 
 - 4️⃣ Open the command prompt on the project path or terminal on the vs code by pressing Ctrl + `
