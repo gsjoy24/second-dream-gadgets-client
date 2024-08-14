@@ -1,5 +1,5 @@
 import { Button, Col, Form, Row } from 'antd';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import GMInput from '../components/GMInput';
 import GMSelect from '../components/GMSelect';

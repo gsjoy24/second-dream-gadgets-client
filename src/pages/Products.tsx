@@ -1,4 +1,4 @@
-import { Button, Space, Spin, Table, TableColumnsType, TableProps } from 'antd';
+import { Button, Spin, Table, TableColumnsType, TableProps } from 'antd';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import ProductColumn from '../components/ProductColumn';
@@ -69,7 +69,7 @@ const Products = () => {
 	// delete multiple products
 	const deleteProducts = async () => {
 		setSelectedRowKeys([]);
-		const deletingProducts = await deleteMultipleProducts(selectedRowKeys ).unwrap();
+		const deletingProducts = await deleteMultipleProducts(selectedRowKeys).unwrap();
 		if (deletingProducts.data.modifiedCount === selectedRowKeys.length) {
 			toast.success('Selected products deleted successfully!');
 		}

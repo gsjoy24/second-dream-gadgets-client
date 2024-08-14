@@ -38,7 +38,7 @@ const CartItem = ({ product, quantity }: any) => {
 				</Button>
 			</div>
 			<h1 className='text-lg font-semibold'>{product_name}</h1>
-			<p>
+			<div className='flex justify-center'>
 				<Button
 					onClick={() => handleManipulateQuantity('decrement', _id)}
 					size='small'
@@ -47,7 +47,7 @@ const CartItem = ({ product, quantity }: any) => {
 				>
 					<FaMinus className='text-[10px]' />
 				</Button>
-				<span className='mx-2'>{quantity}</span>
+				<span className='mx-2 text-lg'>{quantity}</span>
 				<Button
 					onClick={() => handleManipulateQuantity('increment', _id)}
 					size='small'
@@ -56,7 +56,7 @@ const CartItem = ({ product, quantity }: any) => {
 				>
 					<FaPlus className='text-[10px]' />
 				</Button>
-			</p>
+			</div>
 			<p>${product_price} /=</p>
 		</div>
 	);
