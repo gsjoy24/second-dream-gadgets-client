@@ -36,7 +36,8 @@ const productsApi = baseApi.injectEndpoints({
 			query: (id: string) => ({
 				url: `/products/${id}`,
 				method: 'GET'
-			})
+			}),
+			providesTags: ['product']
 		}),
 
 		// update product
@@ -46,7 +47,7 @@ const productsApi = baseApi.injectEndpoints({
 				method: 'PUT',
 				body: data
 			}),
-			invalidatesTags: ['products']
+			invalidatesTags: ['products', 'product']
 		}),
 
 		// delete multiple products
@@ -56,7 +57,7 @@ const productsApi = baseApi.injectEndpoints({
 				method: 'POST',
 				body: { product_ids }
 			}),
-			invalidatesTags: ['products']
+			invalidatesTags: ['products', 'product']
 		})
 	})
 });
