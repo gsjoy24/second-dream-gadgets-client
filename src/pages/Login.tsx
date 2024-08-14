@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import CredentialModal from '../components/CredentialModal';
 import { useLoginMutation } from '../redux/features/auth/authApi';
 import { selectCurrentToken, setUser } from '../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -64,14 +65,18 @@ const Login = () => {
 					)}
 				</Form.Item>
 			</Form>
-			<div className='text-white mt-2'>
+			<div className='text-white mt-2 max-w-[300px]'>
 				<p>
 					Don't have an account?
 					<span className='text-blue-500 cursor-pointer mx-2' onClick={() => navigate('/registration')}>
 						Register here
 					</span>
 				</p>
+				<p className='text-xs mt-2 md:hidden'>
+					This is a not a mobile friendly app. Please use a desktop browser for better experience.
+				</p>
 			</div>
+			<CredentialModal />
 		</div>
 	);
 };

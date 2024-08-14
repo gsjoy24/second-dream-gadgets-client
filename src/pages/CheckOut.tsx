@@ -1,4 +1,4 @@
-import { Button, Col, Divider, Form, Modal, Row, Spin } from 'antd';
+import { Button, Col, Form, Row, Spin } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'sonner';
 import CartItem from '../components/CartItem';
@@ -47,7 +47,7 @@ const CheckOut = () => {
 						<Form form={form} layout='vertical' onFinish={handleSell}>
 							<Row gutter={10}>
 								<Col span={24}>
-									<h1 className='text-3xl font-bold mb-5'>CheckOut</h1>
+									<h1 className='text-3xl font-bold mb-5'>Check Out</h1>
 									<GMInput name='customer_name' label='Customer Name' />
 									<GMInput name='contact_number' label='Contact Number' />
 									<GMDatePicker name='selling_date' label='Selling Date' />

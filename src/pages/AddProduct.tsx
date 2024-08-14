@@ -87,7 +87,7 @@ const AddProduct = ({ defaultValues, title, action, id }: TAddProductProps) => {
 		}
 	};
 	return (
-		<Row gutter={[20, 20]} className='p-8'>
+		<Row gutter={[20, 20]} className='p-6 w-full overflow-hidden'>
 			<Col span={24}>
 				<GMTitle title={title || 'Add new product'} />
 			</Col>
