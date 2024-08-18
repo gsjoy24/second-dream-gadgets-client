@@ -19,7 +19,7 @@ const Registration = () => {
 			toast.success(`${data.role} added successfully! Please login to continue!`);
 			navigate('/login');
 		} catch (error: any) {
-			toast.error((error as any)?.data?.errorMessage || 'Something went wrong!');
+			toast.error(error?.data?.errorMessage ?? 'Something went wrong!');
 		}
 	};
 	return (
@@ -62,17 +62,15 @@ const Registration = () => {
 				</Form.Item>
 			</Form>
 			<div>
-				<p className='text-white text-center mt-2'>
-					Already have an account?{' '}
-					<span
-						className='text-blue-500 cursor-pointer'
-						onClick={() => {
-							navigate('/login');
-						}}
-					>
-						Login here
-					</span>
-				</p>
+				<p> Already have an account?</p>
+				<Button
+					type='link'
+					onClick={() => {
+						navigate('/login');
+					}}
+				>
+					Login here
+				</Button>
 			</div>
 		</div>
 	);

@@ -20,7 +20,7 @@ const AddAdminOrManager = () => {
 			toast.success(`${data.role} added successfully!`);
 			form.resetFields();
 		} catch (error: any) {
-			toast.error((error as any)?.data?.errorMessage || 'Something went wrong!');
+			toast.error(error?.data?.errorMessage ?? 'Something went wrong!');
 		}
 	};
 	return (

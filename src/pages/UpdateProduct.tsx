@@ -8,7 +8,7 @@ const UpdateProduct = () => {
 	const { data } = useGetProductByIdQuery(id as string);
 	if (data) {
 		// destructuring the unwanted fields from the data
-		const { _id, updated_at, created_at, __v, isDeleted, ...product } = data?.data;
+		const { _id, updated_at, created_at, __v, isDeleted, ...product } = data?.data ?? {};
 		return <AddProduct defaultValues={product} title={`Update ${product?.product_name}`} action='update' id={_id} />;
 	}
 	return <Spin fullscreen size='large' tip='Please wait!' />;

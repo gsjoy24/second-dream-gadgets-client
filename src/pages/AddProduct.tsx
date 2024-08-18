@@ -83,13 +83,13 @@ const AddProduct = ({ defaultValues, title, action, id }: TAddProductProps) => {
 		} catch (error: any) {
 			console.log({ error });
 			// show error message
-			toast.error((error as any)?.data?.errorMessage || 'Something went wrong!');
+			toast.error(error?.data?.errorMessage ?? 'Something went wrong!');
 		}
 	};
 	return (
 		<Row gutter={[20, 20]} className='p-6 w-full overflow-hidden'>
 			<Col span={24}>
-				<GMTitle title={title || 'Add new product'} />
+				<GMTitle title={title ?? 'Add new product'} />
 			</Col>
 			<Col span={24}>
 				<Form
@@ -99,7 +99,7 @@ const AddProduct = ({ defaultValues, title, action, id }: TAddProductProps) => {
 					layout='vertical'
 					onFinish={onFinish}
 					// setting default values if we are making a variant product
-					initialValues={defaultValues || {}}
+					initialValues={defaultValues ?? {}}
 				>
 					<Row gutter={16}>
 						<Col span={12}>
@@ -165,7 +165,7 @@ const AddProduct = ({ defaultValues, title, action, id }: TAddProductProps) => {
 
 						<Col span={24}>
 							<Button
-								loading={adding || updating}
+								loading={adding ?? updating}
 								className='p-2 h-max shadow-lg border-gray-400'
 								type='dashed'
 								htmlType='submit'

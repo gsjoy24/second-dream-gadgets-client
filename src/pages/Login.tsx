@@ -11,17 +11,16 @@ import { TUser } from '../types/TAuthState';
 import { verifyToken } from '../utils/verifyToken';
 
 const Login = () => {
-	// check if user is already logged in. If yes, redirect to products page
-	const token: string | null = useAppSelector(selectCurrentToken);
-	if (token) {
-		return <Navigate to='/products' replace />;
-	}
-
 	const [form] = Form.useForm();
 	const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const [login, { isLoading }] = useLoginMutation();
+	// check if user is already logged in. If yes, redirect to products page
+	const token: string | null = useAppSelector(selectCurrentToken);
+	if (token) {
+		return <Navigate to='/products' replace />;
+	}
 
 	const onFinish = async (data: any) => {
 		try {
@@ -37,7 +36,7 @@ const Login = () => {
 			console.log({ error });
 
 			// show error message
-			toast.error((error as any)?.data?.message || 'Something went wrong!');
+			toast.error(error?.data?.message ?? 'Something went wrong!');
 		}
 	};
 
@@ -66,12 +65,13 @@ const Login = () => {
 				</Form.Item>
 			</Form>
 			<div className='text-white mt-2 max-w-[300px]'>
-				<p>
-					Don't have an account?
-					<span className='text-blue-500 cursor-pointer mx-2' onClick={() => navigate('/registration')}>
+				<div>
+					<p>Don't have an account?</p>
+					<Button type='link' onClick={() => navigate('/registration')}>
 						Register here
-					</span>
-				</p>
+					</Button>
+				</div>
+
 				<p className='text-xs mt-2 md:hidden'>
 					This is a not a mobile friendly app. Please use a desktop browser for better experience.
 				</p>

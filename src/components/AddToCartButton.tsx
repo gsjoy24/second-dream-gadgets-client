@@ -28,7 +28,7 @@ const AddToCartButton = ({ id }: any) => {
 		<Button
 			type='dashed'
 			onClick={() => addToCartHandler()}
-			disabled={user?.role === 'admin' || isProductInCart}
+			disabled={user?.role === 'admin' ?? isProductInCart}
 			loading={isLoading}
 			title={isProductInCart ? 'Product already in cart!' : 'Add to cart'}
 			className='flex justify-center items-center'

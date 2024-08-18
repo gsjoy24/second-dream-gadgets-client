@@ -22,14 +22,14 @@ const CheckOut = () => {
 			await addSale(modifiedData).unwrap();
 			toast.success('Product sold successfully');
 		} catch (error: any) {
-			toast.error((error as any)?.data?.errorMessage || 'Something went wrong!');
+			toast.error(error?.data?.errorMessage ?? 'Something went wrong!');
 		}
 	};
 	const cartCount = cartData?.data.cart.length;
 
 	return (
 		<div className='h-[100vh]'>
-			{isLoading || isFetching ? (
+			{isLoading ?? isFetching ? (
 				<Spin fullscreen />
 			) : cartCount === 0 ? (
 				<div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'>
@@ -51,7 +51,7 @@ const CheckOut = () => {
 									<GMInput name='customer_name' label='Customer Name' />
 									<GMInput name='contact_number' label='Contact Number' />
 									<GMDatePicker name='selling_date' label='Selling Date' />
-									<Button htmlType='submit' type='primary' block loading={isSelling || isLoading}>
+									<Button htmlType='submit' type='primary' block loading={isSelling ?? isLoading}>
 										Sell
 									</Button>
 								</Col>
