@@ -61,14 +61,14 @@ const CheckOut = () => {
 					<Col span={13} className='h-full flex items-center bg-gray-900 p-5 text-white border-l-2 border-blue-500'>
 						<div className='max-h-[600px] w-full overflow-y-auto p-2'>
 							<h1 className='text-2xl font-bold mb-5'>Cart</h1>
-							{cartData.data?.cart?.map(({ product, quantity }: any) => (
+							{(cartData as any)?.data?.cart?.map(({ product, quantity }: any) => (
 								<CartItem product={product} quantity={quantity} key={product._id} />
 							))}
 
 							<hr className='bg-slate-50' />
 							<div className='flex justify-between items-center'>
 								<h1 className='font-semibold'>Subtotal</h1>
-								<p>${cartData.data?.total_amount} /=</p>
+								<p>${(cartData as any)?.data?.total_amount} /=</p>
 							</div>
 							<div className='flex justify-between items-center my-3'>
 								<h1 className='font-semibold'>Discount</h1>
@@ -77,7 +77,7 @@ const CheckOut = () => {
 							<hr className='bg-slate-50' />
 							<div className='flex justify-between items-center'>
 								<h1 className='text-lg font-semibold'>Total</h1>
-								<p>${cartData.data?.total_amount} /=</p>
+								<p>${(cartData as any)?.data.total_amount} /=</p>
 							</div>
 						</div>
 					</Col>
